@@ -12,7 +12,8 @@ class GenSearchTerms
     @filter_terms.each do |filter_term|
       @term_json.each do |item|
         @term_fields.each do |field|
-          @output.push({"Search Term" => '"'+item[field]+'" '+filter_term})
+          termhash = {"Search Term" => '"'+item[field]+'" '+filter_term}
+          @output.push(termhash) if !@output.include?(termhash)
         end
       end
     end
